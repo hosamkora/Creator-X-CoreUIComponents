@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class NormalText extends StatelessWidget {
+import '../../Mixins/AppStatelessWidget.dart';
+
+class NormalText extends AppStatelessWidget {
   final String text;
 
   final bool noTranslation;
@@ -10,23 +12,16 @@ class NormalText extends StatelessWidget {
 
   final EdgeInsetsGeometry padding;
 
-  final TextDirection textDirection;
-
-  NormalText(this.text,
-      {this.color,
-      this.padding,
-      this.noTranslation = false,
-      this.textDirection});
+  NormalText(this.text, {this.color, this.padding, this.noTranslation = false});
 
   @override
-  build(BuildContext context) {
+  widgetBuilder(BuildContext context) {
     return Padding(
       padding: this.padding ?? const EdgeInsets.all(0),
       child: Text(
-        this.text,
         // handling when no translation was set to true
-        // noTranslation ? this.text : this.translate(this.text),
-        textDirection: this.textDirection,
+        noTranslation ? this.text : this.translate(this.text),
+        textDirection: this.getTextDirection(),
         style: Theme.of(context).primaryTextTheme.caption.copyWith(
               color: this.color ??
                   Theme.of(context).primaryTextTheme.caption.color,

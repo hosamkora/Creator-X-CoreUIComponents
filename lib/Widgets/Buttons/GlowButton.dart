@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class GlowButton extends StatelessWidget {
+import '../../Mixins/AppStatelessWidget.dart';
+
+class GlowButton extends AppStatelessWidget {
   /// the child component inside the button
   Widget child;
 
@@ -21,8 +23,6 @@ class GlowButton extends StatelessWidget {
 
   final double horizontalPadding;
 
-  final bool circle;
-
   GlowButton(
       {@required this.onPressed,
       this.child,
@@ -30,10 +30,9 @@ class GlowButton extends StatelessWidget {
       this.verticalPadding,
       this.horizontalPadding,
       this.padding,
-      this.elevation,
-      this.circle});
+      this.elevation});
 
-  Widget build(BuildContext context) {
+  Widget widgetBuilder(BuildContext context) {
     // handling if the child was text widget then just translate it
     if (this.child is Text) {
       this.child = this.translateTextWidget(this.child);
@@ -44,7 +43,7 @@ class GlowButton extends StatelessWidget {
         BoxShadow(
           color: this.color ?? Theme.of(context).buttonColor,
           spreadRadius: -10,
-          blurRadius: 40,
+          blurRadius: 30,
         )
       ]),
       child: RaisedButton(
@@ -54,11 +53,9 @@ class GlowButton extends StatelessWidget {
             EdgeInsets.symmetric(
                 horizontal: this.horizontalPadding ?? 30,
                 vertical: this.verticalPadding ?? 13),
-        shape: this.circle == null || !this.circle
-            ? RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              )
-            : CircleBorder(),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
         child: this.child,
         onPressed: this.onPressed,
       ),
@@ -66,8 +63,6 @@ class GlowButton extends StatelessWidget {
   }
 
   Text translateTextWidget(Text text) {
-//Todos : translate
-    // return Text(this.translate(text.data));
-    return Text(text.data);
+    return Text(this.translate(text.data));
   }
 }

@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import '../../Mixins/AppStatelessWidget.dart';
 
-class TitleText extends StatelessWidget {
+class TitleText extends AppStatelessWidget {
   final String text;
 
   final bool noTranslation;
 
   final Color color;
-  final TextDirection textDirection;
 
-  TitleText(this.text,
-      {this.color, this.noTranslation = false, this.textDirection});
+  TitleText(this.text, {this.color, this.noTranslation = false});
 
   @override
-  build(BuildContext context) {
+  widgetBuilder(BuildContext context) {
     return Text(
       // handling when no translation was set to true
-      noTranslation ? this.text : this.text,
-      textDirection: this.textDirection,
+      noTranslation ? this.text : this.translate(this.text),
+      textDirection: this.getTextDirection(),
       style: Theme.of(context).primaryTextTheme.title.copyWith(
             color: this.color ?? Theme.of(context).primaryTextTheme.title.color,
           ),

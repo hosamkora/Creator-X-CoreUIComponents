@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class HeaderText extends StatelessWidget {
+import '../../Mixins/AppStatelessWidget.dart';
+
+class HeaderText extends AppStatelessWidget {
   final String text;
 
   final bool noTranslation;
 
   final Color color;
-  final TextDirection textDirection;
 
-  HeaderText(this.text,
-      {this.color, this.noTranslation = false, this.textDirection});
+  HeaderText(this.text, {this.color, this.noTranslation = false});
 
   @override
-  build(BuildContext context) {
+  widgetBuilder(BuildContext context) {
     return Text(
       // handling when no translation was set to true
-      noTranslation ? this.text : this.text,
-      textDirection: this.textDirection,
+      noTranslation ? this.text : this.translate(this.text),
+      textDirection: this.getTextDirection(),
       style: Theme.of(context).primaryTextTheme.headline.copyWith(
             color:
                 this.color ?? Theme.of(context).primaryTextTheme.headline.color,
