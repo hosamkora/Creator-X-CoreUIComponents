@@ -1,9 +1,13 @@
+
+import 'package:core_ui_components/Mixins/AppStatelessWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../Mixins/AppStatelessWidget.dart';
-
 class GlowButton extends AppStatelessWidget {
+
+  /// the key of the button
+  final Key key;
+
   /// the child component inside the button
   Widget child;
 
@@ -23,14 +27,17 @@ class GlowButton extends AppStatelessWidget {
 
   final double horizontalPadding;
 
-  GlowButton(
-      {@required this.onPressed,
-      this.child,
-      this.color,
-      this.verticalPadding,
-      this.horizontalPadding,
-      this.padding,
-      this.elevation});
+  final bool circle;
+
+  GlowButton({@required this.onPressed,
+    this.key,
+    this.child,
+    this.color,
+    this.verticalPadding,
+    this.horizontalPadding,
+    this.padding,
+    this.elevation,
+    this.circle});
 
   Widget widgetBuilder(BuildContext context) {
     // handling if the child was text widget then just translate it
@@ -43,7 +50,7 @@ class GlowButton extends AppStatelessWidget {
         BoxShadow(
           color: this.color ?? Theme.of(context).buttonColor,
           spreadRadius: -10,
-          blurRadius: 30,
+          blurRadius: 40,
         )
       ]),
       child: RaisedButton(
@@ -53,9 +60,9 @@ class GlowButton extends AppStatelessWidget {
             EdgeInsets.symmetric(
                 horizontal: this.horizontalPadding ?? 30,
                 vertical: this.verticalPadding ?? 13),
-        shape: RoundedRectangleBorder(
+        shape: this.circle == null || !this.circle ? RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
-        ),
+        ) : CircleBorder(),
         child: this.child,
         onPressed: this.onPressed,
       ),
