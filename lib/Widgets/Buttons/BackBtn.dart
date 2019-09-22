@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import '../TextWidgets/NormalText.dart';
 
 class BackBtn extends StatelessWidget {
-  final void onpress;
+  final Function onpress;
   BackBtn({this.onpress});
 
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: () => this.onpress,
+      onPressed: this.onpress,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

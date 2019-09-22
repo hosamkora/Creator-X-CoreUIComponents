@@ -5,20 +5,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class AppLocalizations {
-  static Map<String, String> ar;
-  static Map<String, String> en;
   AppLocalizations(this.locale);
 
   final Locale locale;
+
+  static void getLocalizedValues(
+      Map<String, Map<String, String>> localizedValues) {
+    AppLocalizations._localizedValues = localizedValues;
+  }
 
   static AppLocalizations of(BuildContext context) {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static Map<String, Map<String, String>> _localizedValues = {
-    Constants.EN: en,
-    Constants.AR: ar,
-  };
+  static Map<String, Map<String, String>> _localizedValues;
 
   String translate(String word) {
     return _localizedValues[locale.languageCode][word] ?? word;
