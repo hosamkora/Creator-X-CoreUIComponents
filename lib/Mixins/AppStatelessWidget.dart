@@ -37,4 +37,13 @@ abstract class AppStatelessWidget extends StatelessWidget with Platform {
             this.currentContext, WidgetsLocalizations)
         .textDirection;
   }
+    double wp(double percentage) {
+    if (percentage <= 0) throw (Exception("percentage should be postive value"));
+    return percentage * MediaQuery.of(currentContext).size.width / 100.0;
+  }
+
+  double hp(double percentage) {
+    if (percentage <= 0) throw (Exception("percentage should be postive value"));
+    return percentage * MediaQuery.of(currentContext).size.height / 100.0;
+  }
 }

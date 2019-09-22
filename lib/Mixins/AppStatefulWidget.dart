@@ -38,4 +38,13 @@ abstract class AppStatefulWidget<T extends StatefulWidget> extends State<T>
             this.currentContext, WidgetsLocalizations)
         .textDirection;
   }
+    double wp(double percentage) {
+    if (percentage <= 0) throw (Exception("percentage should be postive value"));
+    return percentage * MediaQuery.of(context).size.width / 100.0;
+  }
+
+  double hp(double percentage) {
+    if (percentage <= 0) throw (Exception("percentage should be postive value"));
+    return percentage * MediaQuery.of(context).size.height / 100.0;
+  }
 }
