@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class AppLocalizations {
+  static Map<String, String> ar;
+  static Map<String, String> en;
   AppLocalizations(this.locale);
 
   final Locale locale;
@@ -14,8 +16,8 @@ class AppLocalizations {
   }
 
   static Map<String, Map<String, String>> _localizedValues = {
-    // Constants.EN: en,
-    // Constants.AR: ar,
+    Constants.EN: en,
+    Constants.AR: ar,
   };
 
   String translate(String word) {
