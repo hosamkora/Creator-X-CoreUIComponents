@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class PageHeaderModel extends ChangeNotifier {
 
-  String _title = 'Hassan Wahdan';
+  String _title = 'Hassan Wahdaan';
   String _subtitle = 'Select at least one service';
   InkWell _trailingWidget;
 

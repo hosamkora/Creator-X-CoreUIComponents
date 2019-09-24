@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class PageHeader extends AppStatelessWidget {
   final Color black = Colors.black;
   final Color white = Colors.white;
-
   final String title, subtitle;
   final InkWell trailingWidget;
 
