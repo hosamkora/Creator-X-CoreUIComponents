@@ -12,10 +12,10 @@ class CustomDivider extends AppStatelessWidget {
   Widget widgetBuilder(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 5, bottom: 10),
-      width: wp(90),
-      height: hp(0.4),
+      width: width ?? wp(90),
+      height: height ?? hp(0.4),
       decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          color: color ?? Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(50)),
     );
   }
