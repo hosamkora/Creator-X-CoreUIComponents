@@ -2,6 +2,12 @@ import 'package:core_ui_components/Mixins/AppStatelessWidget.dart';
 import 'package:flutter/material.dart';
 
 class CustomDivider extends AppStatelessWidget {
+
+  final double width, height;
+  final Color color;
+
+  CustomDivider({this.width, this.height, this.color});
+
   @override
   Widget widgetBuilder(BuildContext context) {
     return Container(
