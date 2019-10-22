@@ -1,4 +1,3 @@
-
 import 'package:core_ui_components/Mixins/AppStatefulWidget.dart';
 import 'package:core_ui_components/Mixins/AppStatelessWidget.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ class DialogBox extends StatefulWidget {
   final Widget footer;
   final Widget body;
   final List<DialogButton> options;
+  final bool scrollable;
 
   const DialogBox({
     Key key,
@@ -20,6 +20,7 @@ class DialogBox extends StatefulWidget {
     @required this.body,
     this.footer,
     this.options,
+    this.scrollable = true,
   });
 
   @override
@@ -86,14 +87,16 @@ class _StateDialogBox extends AppStatefulWidget<DialogBox> {
   }
 
   Widget buiildBody() {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxHeight: hp(30),
-      ),
-      child: SingleChildScrollView(
-        child: widget.body,
-      ),
-    );
+    return widget.scrollable
+        ? ConstrainedBox(
+            constraints: BoxConstraints(
+              maxHeight: hp(30),
+            ),
+            child: SingleChildScrollView(
+              child: widget.body,
+            ),
+          )
+        : widget.body;
   }
 
   Widget decisionOptions() {
