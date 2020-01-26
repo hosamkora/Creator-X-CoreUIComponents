@@ -7,11 +7,13 @@ class PageHeader extends AppStatelessWidget {
   final Color white = Colors.white;
   final String title, subtitle;
   final InkWell trailingWidget;
+  final String image;
 
   PageHeader(
       {@required this.title,
       @required this.subtitle,
-      @required this.trailingWidget});
+      @required this.trailingWidget,
+      this.image});
 
   @override
   Widget widgetBuilder(BuildContext context) {
@@ -22,12 +24,14 @@ class PageHeader extends AppStatelessWidget {
         leading: CircleAvatar(
           backgroundColor: black,
           radius: 30,
+          backgroundImage: image != null ? NetworkImage(image) : null,
         ),
         title: Text(
           this.translate(title),
           style: TextStyle(fontSize: 22),
         ),
-        subtitle: Text(this.translate(subtitle)),
+        subtitle: Text(this.translate(subtitle),
+            style: TextStyle(color: Colors.black)),
         trailing: trailingWidget,
       ),
     );
