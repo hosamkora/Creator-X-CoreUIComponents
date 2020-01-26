@@ -8,11 +8,13 @@ class PageHeader extends AppStatelessWidget {
   final String title, subtitle;
   final InkWell trailingWidget;
   final String image;
+  final String defaultImage;
 
   PageHeader(
       {@required this.title,
       @required this.subtitle,
       @required this.trailingWidget,
+      @required this.defaultImage,
       this.image});
 
   @override
@@ -24,7 +26,9 @@ class PageHeader extends AppStatelessWidget {
         leading: CircleAvatar(
           backgroundColor: black,
           radius: 30,
-          backgroundImage: image != null ? NetworkImage(image) : null,
+          backgroundImage: image != null && image.isNotEmpty
+              ? NetworkImage(image)
+              : AssetImage(defaultImage),
         ),
         title: Text(
           this.translate(title),
