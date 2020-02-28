@@ -25,8 +25,8 @@ class PageHeader extends AppStatelessWidget {
       child: ListTile(
         leading: Container(
           child: Container(
-            height: hp(5),
-            width: hp(5),
+            height: hp(7),
+            width: hp(7),
           ),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
@@ -34,6 +34,7 @@ class PageHeader extends AppStatelessWidget {
               image: image != null && image.isNotEmpty
                   ? NetworkImage(image)
                   : AssetImage(defaultImage),
+              fit: BoxFit.fill
             ),
           ),
         ),
