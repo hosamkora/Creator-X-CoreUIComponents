@@ -24,6 +24,10 @@ class PageHeader extends AppStatelessWidget {
       margin: EdgeInsets.only(top: 30),
       child: ListTile(
         leading: Container(
+          child: Container(
+            height: hp(5),
+            width: hp(5),
+          ),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
