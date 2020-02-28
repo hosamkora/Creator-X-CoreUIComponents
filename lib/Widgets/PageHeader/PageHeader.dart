@@ -25,8 +25,8 @@ class PageHeader extends AppStatelessWidget {
       child: ListTile(
         leading: Container(
           child: Container(
-            height: hp(7),
-            width: hp(7),
+            height: hp(8),
+            width: hp(8),
           ),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
