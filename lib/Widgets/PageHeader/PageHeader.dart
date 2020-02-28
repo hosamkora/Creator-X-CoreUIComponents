@@ -23,12 +23,15 @@ class PageHeader extends AppStatelessWidget {
       color: white,
       margin: EdgeInsets.only(top: 30),
       child: ListTile(
-        leading: CircleAvatar(
-          backgroundColor: black,
-          radius: 30,
-          backgroundImage: image != null && image.isNotEmpty
-              ? NetworkImage(image)
-              : AssetImage(defaultImage),
+        leading: Container(
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+              image: image != null && image.isNotEmpty
+                  ? NetworkImage(image)
+                  : AssetImage(defaultImage),
+            ),
+          ),
         ),
         title: Text(
           this.translate(title),
